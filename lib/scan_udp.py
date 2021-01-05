@@ -1,5 +1,8 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+#  This program is free software;
+#  Author: A1andNS
 import json
-import socket
 import os
 import time
 from lib.is_alive import *
@@ -13,8 +16,8 @@ def scan_udp(ip, tmp_type):
         os.mkdir("./log")
     fd = open("./log/" + filename, "w")
     if tmp_type == "All":
-        print("Start XPort 0.1#dev at " + start_time)
-        fd.write("Start XPort 0.1#dev at " + start_time + "\n")
+        print("Start XPort 0.3#stable at " + start_time)
+        fd.write("Start XPort 0.3#stable at " + start_time + "\n")
         print("XPort scan report for " + ip)
         fd.write("XPort scan report for " + ip + "\n")
         print("Scan Type: UDP")

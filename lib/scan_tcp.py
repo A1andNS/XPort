@@ -17,8 +17,8 @@ def scan_tcp(ip, tmp_type):
         os.mkdir("./log")
     fd = open("./log/" + filename, "w")
     if tmp_type == "All":
-        print("Start XPort 0.1#dev at " + start_time)
-        fd.write("Start XPort 0.1#dev at " + start_time + "\n")
+        print("Start XPort 0.3#stable at " + start_time)
+        fd.write("Start XPort 0.3#stable at " + start_time + "\n")
         print("XPort scan report for " + ip)
         fd.write("XPort scan report for " + ip + "\n")
         print("Scan Type: TCP")
@@ -44,8 +44,8 @@ def scan_tcp(ip, tmp_type):
         for ports_json in content_json['ports_tcp']:
             # print(ports_json['title'])
             if ports_json['title'] == tmp_type:
-                print("Start XPort 0.1#dev at " + start_time)
-                fd.write("Start XPort 0.1#dev at " + start_time + "\n")
+                print("Start XPort 0.3#stable at " + start_time)
+                fd.write("Start XPort 0.3#stable at " + start_time + "\n")
                 print("XPort scan report for " + ip)
                 fd.write("XPort scan report for " + ip + "\n")
                 print("Scan Type: TCP")

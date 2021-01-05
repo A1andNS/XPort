@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+#  This program is free software;
+#  Author: A1andNS
 import socket
 
 
