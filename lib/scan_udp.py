@@ -52,6 +52,8 @@ def scan_udp(ip, tmp_type):
                 fd.write("Scan Type: UDP\n")
                 ports = ports_json['value'].split(',')
                 if is_alive(ip):
+                    print("[+]Host is UP")
+                    fd.write("[+]Host is UP\n")
                     for port in ports:
                         try:
                             s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
