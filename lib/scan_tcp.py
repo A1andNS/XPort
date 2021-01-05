@@ -24,8 +24,8 @@ def scan_tcp(ip, tmp_type):
         print("Scan Type: TCP")
         fd.write("Scan Type: TCP")
         if is_alive(ip):
-            print("[+]Host is UP")
-            fd.write("[+]Host is UP\n")
+            print("[+] Host is UP")
+            fd.write("[+] Host is UP\n")
             for port in range(1, 65536):
                 try:
                     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -37,8 +37,8 @@ def scan_tcp(ip, tmp_type):
                 except ConnectionRefusedError:
                     continue
         else:
-            print("[-]Host seems down")
-            fd.write("[-]Host seems down\n")
+            print("[-] Host seems down")
+            fd.write("[-] Host seems down\n")
     else:
         f = open("./config/config.json")
         content = f.read()
@@ -54,8 +54,8 @@ def scan_tcp(ip, tmp_type):
                 fd.write("Scan Type: TCP")
                 ports = ports_json['value'].split(',')
                 if is_alive(ip):
-                    print("[+]Host is UP")
-                    fd.write("[+]Host is UP\n")
+                    print("[+] Host is UP")
+                    fd.write("[+] Host is UP\n")
                     for port in ports:
                         try:
                             s = socket.socket()
@@ -68,8 +68,8 @@ def scan_tcp(ip, tmp_type):
                         except ConnectionRefusedError:             # 这里使用连接被拒绝来作为端口关闭
                             continue
                 else:
-                    print("[-]Host seems down")
-                    fd.write("[-]Host seems down\n")
+                    print("[-] Host seems down")
+                    fd.write("[-] Host seems down\n")
     time_end = time.time()
     print("The Scan is finished in {:.2f}s".format(time_end - time_start))
     fd.write("The Scan is finished in {:.2f}s".format(time_end - time_start) + "\n")
