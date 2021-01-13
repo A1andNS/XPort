@@ -3,10 +3,9 @@
 #  This program is free software;
 #  Author: A1andNS
 import json
-import os
-import socket
 import time
 from lib.is_alive import *
+from lib.sys_host import *
 
 
 def scan_tcp(ip, tmp_type):
@@ -24,8 +23,14 @@ def scan_tcp(ip, tmp_type):
         print("Scan Type: TCP")
         fd.write("Scan Type: TCP")
         if is_alive(ip):
-            print("[+] Host is UP")
-            fd.write("[+] Host is UP\n")
+            print("Host status: Host is UP")
+            fd.write("Host status:  Host is UP\n")
+            if ttl_scan(ip) == 1:
+                print("OS: Linux/UNIX")
+                fd.write("OS: Linux/UNIX\n")
+            else:
+                print("OS: Windows")
+                fd.write("OS: Windows\n")
             for port in range(1, 65536):
                 try:
                     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -37,8 +42,8 @@ def scan_tcp(ip, tmp_type):
                 except ConnectionRefusedError:
                     continue
         else:
-            print("[-] Host seems down")
-            fd.write("[-] Host seems down\n")
+            print("Host status: Host seems down")
+            fd.write("Host status: Host seems down\n")
     else:
         f = open("./config/config.json")
         content = f.read()
@@ -51,11 +56,17 @@ def scan_tcp(ip, tmp_type):
                 print("XPort scan report for " + ip)
                 fd.write("XPort scan report for " + ip + "\n")
                 print("Scan Type: TCP")
-                fd.write("Scan Type: TCP")
+                fd.write("Scan Type: TCP\n")
                 ports = ports_json['value'].split(',')
                 if is_alive(ip):
-                    print("[+] Host is UP")
-                    fd.write("[+] Host is UP\n")
+                    print("Host status: Host is UP")
+                    fd.write("Host status:  Host is UP\n")
+                    if ttl_scan(ip) == 1:
+                        print("OS: Linux/UNIX")
+                        fd.write("OS: Linux/UNIX\n")
+                    else:
+                        print("OS: Windows")
+                        fd.write("OS: Windows\n")
                     for port in ports:
                         try:
                             s = socket.socket()
@@ -68,8 +79,8 @@ def scan_tcp(ip, tmp_type):
                         except ConnectionRefusedError:             # 这里使用连接被拒绝来作为端口关闭
                             continue
                 else:
-                    print("[-] Host seems down")
-                    fd.write("[-] Host seems down\n")
+                    print("Host status: Host seems down")
+                    fd.write("Host status: Host seems down\n")
     time_end = time.time()
     print("The Scan is finished in {:.2f}s".format(time_end - time_start))
     fd.write("The Scan is finished in {:.2f}s".format(time_end - time_start) + "\n")

@@ -77,7 +77,7 @@ def XScan():
                 except ValueError:
                     print("请输入正确的序号，例如选择所有端口就输入1")
             else:
-                print("请输入正确的序号，例如选择所有端口就输入1")
+                print("请输入正确的序号，例如选择TCP方式就输入1")
         except ValueError:
             print("请输入正确的序号，例如使用TCP方式就输入1")
     except socket.gaierror as e:
